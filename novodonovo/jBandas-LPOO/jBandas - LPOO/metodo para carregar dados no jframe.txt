@@ -1,0 +1,30 @@
+public void PopularJTable(String sql) {
+  try
+  {
+   Connection con=(Connection)DriverManager.getConnection("jdbc:mysql://10.67.48.3/bd_info2_olimpiada_lucas_duarte","aluno","etec@147");
+   PreparedStatement banco = (PreparedStatement)con.prepareStatement(sql);
+   banco.execute(); // cria o vetor
+ 
+   ResultSet resultado = banco.executeQuery(sql);
+ 
+   DefaultTableModel model =(DefaultTableModel) jTable1.getModel();
+   model.setNumRows(0);
+ 
+   while(resultado.next())
+   {
+       model.addRow(new Object[] 
+       { 
+          //retorna os dados da tabela do BD, cada campo e um coluna.
+          resultado.getString("tb03_id_pais"),
+          resultado.getString("tb03_nome"),
+          resultado.getString("tb03_continente")
+       }); 
+  } 
+   banco.close();
+   con.close();
+  }
+ catch (SQLException ex)
+ {
+    System.out.println("o erro foi " +ex);
+  }
+ }

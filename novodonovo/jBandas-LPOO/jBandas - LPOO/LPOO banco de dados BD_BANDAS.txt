@@ -1,0 +1,17 @@
+ 
+ bd_bandas
+ ===========================
+
+ tb01_estilos
+ *********************
+ estilo_cod (int, PK, AI)
+ estilo_nome (VarChar 60)
+
+
+ tb02_bandas
+ *********************
+ banda_cod (int, PK, AI)
+ banda_nome (VarChar 60)
+ banda_estilo_cod (FK -> tb01_estilos.estilo_cod)
+ banda_ano (year)
+
